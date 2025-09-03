@@ -4,6 +4,7 @@
 
 {% block content %}
 <h2 class="mb-4">Heróis cadastrados</h2>
+<button><a href="{% url 'criar_heroi' %}">Cadastro</a></button>
 
 <div class="row">
 {% for hero in herois %}

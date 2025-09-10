@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}Lista de Heróis{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Vilões cadastrados</h2>
+<button><a href="{% url 'criar_vilao' %}">Cadastro</a></button>
+
+<div class="row">
+{% for vilao in viloes %}
+  <div class="col-md-4">
+    <div class="card mb-3">
+      <div class="card-body">
+        <h5 class="card-title">{{ vilao.codinome }}</h5>
+        <p class="card-text">{{ vilao.poder_principal }}</p>
+        <small class="text-muted">{{ vilao.cidade }}</small>
+      </div>
+    </div>
+  </div>
+{% empty %}
+  <p>Nenhum vilão encontrado.</p>
+{% endfor %}
+</div>
+{% endblock %}

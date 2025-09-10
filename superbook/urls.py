@@ -24,7 +24,9 @@ admin.site.index_title = "Bem-vindo ao SuperBook"
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('heroes/', include('heroes.urls')),
-    path('posts/', include('posts.urls'))
+    path('posts/', include('posts.urls')),
+    path('viloes/', include('villains.urls'))
+    
     
 
 ]

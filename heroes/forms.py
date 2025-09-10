@@ -1,6 +1,8 @@
 from django import forms
 from .models import Hero
 
+
+# Nome Aluno: Guilherme Pereira Ruiz da Silva
 class ContatoForm(forms.Form):
     nome = forms.CharField(max_length=100, required=True, label="Seu nome")
     email = forms.EmailField(required=True, label="E-mail")

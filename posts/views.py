@@ -1,7 +1,24 @@
-from django.shortcuts import render, redirect
-from django.views.generic import ListView
+from django.views.generic import CreateView, ListView, UpdateView, DeleteView
+from django.urls import reverse_lazy
 from .models import Post
 from .forms import PostForm
+
+class PostCreateView(CreateView):
+    model = Post
+    form_class = PostForm
+    template_name = 'posts/form_post.html'
+    success_url = reverse_lazy('lista_posts')
+
+class PostUpdateView(UpdateView):
+    model = Post
+    form_class = PostForm
+    template_name = 'posts/form_post.html'
+    success_url = reverse_lazy('lista_posts')
+
+class PostDeleteView(DeleteView):
+    model = Post
+    template_name = 'posts/confirmar_exclusao.html'
+    success_url = reverse_lazy('lista_posts')
 
 # def lista_posts(request):
 #     posts = Post.objects.all()  # busca todos os heróis do banco
@@ -13,13 +30,3 @@ class PostListView(ListView):
     context_object_name = "posts"
 
 
-def criar_post(request):
-    if request.method == "POST":
-        form = PostForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('lista_posts')
-    else:
-        form = PostForm()
-
-    return render(request, "heroes/form_heroi.html", {"form": form})
